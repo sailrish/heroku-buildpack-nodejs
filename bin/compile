@@ -120,6 +120,14 @@ build_dependencies() {
 header "Building dependencies"
 build_dependencies | indent
 
+compile_coffeescript() {
+  `node cli.js bin`/coffee --compile --bare --output $BUILD_DIR/target/ $BUILD_DIR/src/
+  echo "Source compiled to target"
+}
+
+header "Compiling coffeescript source"
+compile_coffeescript | indent
+
 cache_build() {
   local cache_directories=$(get_cache_directories)
   
