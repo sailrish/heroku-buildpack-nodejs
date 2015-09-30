@@ -121,7 +121,8 @@ header "Building dependencies"
 build_dependencies | indent
 
 compile_coffeescript() {
-  `node cli.js bin`/coffee --compile --bare --output $BUILD_DIR/target/ $BUILD_DIR/src/
+  NPM_CLI="$BUILD_DIR/.heroku/node/lib/node_modules/npm/cli.js"
+  `node $NPM_CLI bin`/coffee --compile --bare --output $BUILD_DIR/target/ $BUILD_DIR/src/
   echo "Source compiled to target"
 }
 
